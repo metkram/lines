@@ -2,7 +2,7 @@ class Cube {
   String name;
   int value;
 
-  Cube(int number) { //I have to add this comment 'cause git cannot see any changes
+  Cube(int number) { //I have to add this comment 'cause git cannot see any changes 
     value = number;
     switch(number) {
       case(0):

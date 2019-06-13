@@ -2,7 +2,7 @@ class Cube {
   String name;
   int value;
 
-  Cube(int number) { //I have to add this comment 'cause git cannot see any changes 
+  Cube(int number) { //I have to add this comment 'cause git cannot see any changes
     value = number;
     switch(number) {
       case(0):
@@ -24,32 +24,42 @@ class Cube {
   }
 }
 
-class Game {
-  static int  randomNumber(int number) {
+class RandomNumber { // This class returns random number from 0 to "your wish"
+  static int newNumber(int number) {
     int i = (int) (Math.random() * number);
     return i;
   }
+}
 
-  static Cube[][] createGameMatrix() {
+class GameMatrix { // This class creares new game matrix and manupulates it
+  Cube[][] matrix;
+  GameMatrix() {
+    matrix = createGameMatrix();
+  }
+
+  Cube[][] createGameMatrix() {
     Cube matrix[][] = new Cube[5][5];
 
     for(int i = 0; i < 5; i++) {
       for(int u = 0; u < 5; u++) {
-        matrix[i][u] = new Cube(randomNumber(4));
+        matrix[i][u] = new Cube(RandomNumber.newNumber(4));
       }
     }
 
     return matrix;
   }
+}
 
-  static Cube[][] gameMatrix = createGameMatrix();
+class Game {
+
+  static GameMatrix newGame = new GameMatrix();
 
   public static void main(String[] args) {
-    System.out.println("Hey yo, it's not a game. I'm simply trying to create OOP application" + randomNumber(3));
+    System.out.println("Hey yo, it's not a game. I'm simply trying to create OOP application" + RandomNumber.newNumber(4));
 
-    for(int i = 0; i < gameMatrix.length; i++) {
-      for(int u = 0; u < gameMatrix[i].length; u++) {
-        System.out.print(gameMatrix[i][u].value + " ");
+    for(int i = 0; i < newGame.matrix.length; i++) {
+      for(int u = 0; u < newGame.matrix[i].length; u++) {
+        System.out.print(newGame.matrix[i][u].value + " ");
       }
       System.out.println();
     }

@@ -24,6 +24,12 @@ class Cube {
   }
 }
 
+class ZeroCube extends Cube {
+  ZeroCube(Integer n){
+    super(n);
+  }
+}
+
 class RandomNumber { // This class returns random number from 0 to "your wish"
   static int newNumber(int number) {
     int i = (int) (Math.random() * number);
@@ -42,7 +48,11 @@ class GameMatrix { // This class creares new game matrix and manupulates it
 
     for(int i = 0; i < 5; i++) {
       for(int u = 0; u < 5; u++) {
-        matrix[i][u] = new Cube(RandomNumber.newNumber(4));
+        if(u == 0) {
+          matrix[i][u] = new ZeroCube(0);
+        } else {
+          matrix[i][u] = new Cube(RandomNumber.newNumber(4));
+        }
       }
     }
 
